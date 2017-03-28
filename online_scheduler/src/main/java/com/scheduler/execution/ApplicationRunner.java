@@ -3,15 +3,18 @@ package com.scheduler.execution;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-@@SpringBootApplication
+/**
+ * 
+ * @author Sanky
+ *
+ */
+@SpringBootApplication
 public class ApplicationRunner {
 
-	public AppConfig() {
-		// TODO Auto-generated constructor stub
+	public ApplicationRunner() {
 	}
-	public static void main(String...s){
-		SpringApplication.run(ApplicationRunner.class, s);
+	public static void main(String...args){
+		SpringApplication.run(ApplicationRunner.class, args);
 	}
 
 }
