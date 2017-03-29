@@ -33,7 +33,7 @@ public class AuthenticationTest extends ApplicationTester {
 	}
 
 	@Test
-	public void testEmployee() throws Exception {
+	public void dummyTest() throws Exception {
 		mockMvc.perform(get("/authentication/testUser")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8"))
 				.andExpect(jsonPath("$.first_name").value("blah")).andExpect(jsonPath("$.last_name").value("Blah"))
@@ -43,9 +43,22 @@ public class AuthenticationTest extends ApplicationTester {
 	
 
 	@Test
-	public void testAuthenticate() throws Exception {
-		mockMvc.perform(post("/authentication/authenticate").contentType(MediaType.APPLICATION_JSON).content("{\"user_name\":\"blah\",\"password\":\"blahpass\"}")).andExpect(status().isOk());
+	public void testAuthenticateValidUser() throws Exception {
+		mockMvc.perform(post("/authentication/authenticate").contentType(MediaType.APPLICATION_JSON).content("{\"user_name\":\"somelast\",\"password\":\"somelast\"}")).andExpect(status().isOk());
 
 	}
+	
+	@Test
+	public void testAuthenticateInValidUser() throws Exception {
+		mockMvc.perform(post("/authentication/authenticate").contentType(MediaType.APPLICATION_JSON).content("{\"user_name\":\"wrong\",\"password\":\"wrong\"}")).andExpect(status().isUnauthorized());
+
+	}
+	
+	@Test
+	public void testAuthenticateNoUser() throws Exception {
+		mockMvc.perform(post("/authentication/authenticate").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest());
+
+	}
+
 
 }

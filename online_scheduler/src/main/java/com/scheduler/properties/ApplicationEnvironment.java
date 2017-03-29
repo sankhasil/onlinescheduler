@@ -21,4 +21,17 @@ public final class ApplicationEnvironment {
 	public static String getAuthenticationToken(){
 		return applicationEnvironment.getProperty("authentication.token.online");
 	}
+	public static String getJdbcUrl(){
+		return applicationEnvironment.getProperty("spring.datasource.url");
+	}
+	public static String getJdbcDriverName(){
+		return applicationEnvironment.getProperty("jdbc.driver.class");
+	}
+	
+	public static String getJdbcUser(){
+		return applicationEnvironment.getProperty("spring.datasource.username");
+	}
+	public static String getJdbcPassword(){
+		return applicationEnvironment.getProperty("spring.datasource.password");
+	}
 }

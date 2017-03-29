@@ -19,7 +19,12 @@ import com.scheduler.persistance.repository.UserRepository;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
+	
 	private UserRepository userRepository;
+	
+	public  UserServiceImpl(UserRepository userRepo) {
+		this.userRepository = userRepo;
+	}
 
 	@Override
 	public List<User> findAll() {
@@ -37,6 +42,10 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public User findOneByUserName(String user_name) {
+		return userRepository.findByUser_name(user_name);
+	}
 	@Override
 	public void deleteByEmail(String email) {
 

@@ -1,4 +1,4 @@
-package com.scheduler.execution;
+package com.scheduler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +13,7 @@ import com.scheduler.properties.ApplicationEnvironment;
  *
  */
 @SpringBootApplication
-@ComponentScan("com.scheduler")
+//@ComponentScan("com.scheduler")
 public class ApplicationRunner {
 
 	public ApplicationRunner() {

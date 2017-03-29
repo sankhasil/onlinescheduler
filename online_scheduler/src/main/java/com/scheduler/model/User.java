@@ -3,10 +3,10 @@
  */
 package com.scheduler.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -17,20 +17,34 @@ import javax.persistence.Table;
 @Table(name = "user_details")
 public class User {
 	
-	
-	private UserAuthentication userAuthentication;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+
 	private String first_name;
 	private String last_name;
 	private String email;
 	private Integer phone;
+	private String user_name;
+	private String password;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-	public UserAuthentication getUserAuthentication() {
-		return userAuthentication;
+	public Long getId() {
+		return id;
 	}
-	public void setUserAuthentication(UserAuthentication userAuthentication) {
-		this.userAuthentication = userAuthentication;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getFirst_name() {
 		return first_name;
@@ -59,8 +73,44 @@ public class User {
 	@Override
 	public String toString() {
 		return String.format(
-                "User[user=%d, name='%s', email='%s', phone='%d']",
-                userAuthentication.getUser_name(), first_name+" "+last_name, email,phone);
+                "User[user=%d, name='%s', email='%s', phone='%d']",user_name,
+                first_name+" "+last_name, email,phone);
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((user_name == null) ? 0 : user_name.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof User)) {
+			return false;
+		}
+		User other = (User) obj;
+		if (email == null) {
+			if (other.email != null) {
+				return false;
+			}
+		} else if (!email.equals(other.email)) {
+			return false;
+		}
+		if (user_name == null) {
+			if (other.user_name != null) {
+				return false;
+			}
+		} else if (!user_name.equals(other.user_name)) {
+			return false;
+		}
+		return true;
 	}
 	
 }

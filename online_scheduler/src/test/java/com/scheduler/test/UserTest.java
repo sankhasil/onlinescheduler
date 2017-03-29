@@ -4,6 +4,7 @@
 package com.scheduler.test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
@@ -34,4 +35,6 @@ public class UserTest extends ApplicationTester {
 		mockMvc.perform(post("/user/add").contentType(MediaType.APPLICATION_JSON).content("{\"userAuthentication\": {\"user_name\": \"blah\",\"password\": \"blahblah\"},\"first_name\": \"fist blah\",\"last_name\": \"last blah\",\"email\": \"blah@blah\",\"phone\": 3322445}")).andExpect(status().isCreated());
 
 	}
+	
+	
 }

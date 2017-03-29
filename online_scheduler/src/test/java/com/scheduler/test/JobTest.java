@@ -4,6 +4,8 @@
 package com.scheduler.test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
@@ -30,7 +32,21 @@ public class JobTest extends ApplicationTester {
 	}
 	@Test
 	public void testAddJob() throws Exception {
-		mockMvc.perform(post("/job/add").contentType(MediaType.APPLICATION_JSON).content("{\"job_name\": \"blah\",\"job_command\": \"1 0 * * *  printf > /var/log/apache/error_log\",\"job_description\":blahh }")).andExpect(status().isCreated());
+		mockMvc.perform(post("/job/add").contentType(MediaType.APPLICATION_JSON).content("{\"job_name\": \"blah\",\"job_command\": \"1 0 * * *  printf > /var/log/apache/error_log\",\"job_description\":\"blahh\" ,\"user_id\":2 }")).andExpect(status().isCreated());
 
+	}
+	
+	@Test
+	public void testGetAllJob() throws Exception{
+		
+		mockMvc.perform(get("/getAll/4566")).andExpect(status().isOk());
+	}
+	@Test
+	public void testActivateJob() throws Exception{
+		mockMvc.perform(post("/activate/6667")).andExpect(status().isOk());
+	}
+	@Test
+	public void testDeActivateJob() throws Exception{
+		mockMvc.perform(post("/deActivate/6667")).andExpect(status().isOk());
 	}
 }

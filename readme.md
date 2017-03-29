@@ -1,25 +1,48 @@
-# Database Table DDL scripts
+#Disclaimer
+The project is not fully functionally working. UI also not functional. I tried my best to code the whole scenario but due lack of time its not finished.
+
+#Running the Application
+- You need run the SpringBoot Runner class, ApplicationRunner.java under com.scheduler package
+
+or else run using maven spring-boot goal, [mvn spring-boot:run]
+
+- To execute UI, You need a tomcat server or apache server and put the whole UI folder into webcontent folder.
+(Important: Since already port: 8080 is used , please change the UI server port, there is cross origin issue which required Spring boot code changes. Adding [ @CrossOrigin(origins = "http://localhost:<port>")] on top of every Controller class.
+
+- You need to run the following Database scripts in MySql
+
+# Database Table scripts
 1. user_details:
 
 
 CREATE TABLE `user_details` (
-	`user_id`	BIGINT NOT NULL,
+	`id`	BIGINT NOT NULL,
 	`first_name`	VARCHAR(100) NOT NULL,
 	`last_name`	VARCHAR(100),
+`user_name` VARCHAR(100) NOT NULL UNIQUE,
+`password`  VARCHAR(100) NOT NULL,
 	`email`	VARCHAR(150) NOT NULL UNIQUE,
-	`phone`	INT,
-	FOREIGN KEY(`user_id`) REFERENCES user_authentication(id) ON DELETE CASCADE ON UPDATE CASCADE
+	`phone`	INT, PRIMARY KEY(`id`)
+	
 );
-2. user_authentication: 
+INSERT INTO `online_scheduler`.`user_details`
+(`first_name`,
+`last_name`,
+`email`,
+`phone`,
+`id`,
+`user_name`,
+`password`)
+VALUES
+("some",
+"last",
+"some@last",
+21234,
+1,
+"somelast",
+"somelast");
 
-CREATE TABLE `user_authentication` (
-	`id`	BIGINT NOT NULL UNIQUE,
-	`user_name`	VARCHAR(100) NOT NULL UNIQUE,
-	`password`	VARCHAR(100) NOT NULL UNIQUE,
-	PRIMARY KEY(`id`)
-);
-
-3. job_details
+2. job_details
 CREATE TABLE `job_details` (
 	`id`	BIGINT NOT NULL UNIQUE,
     `user_id` BIGINT NOT NULL,
@@ -28,7 +51,7 @@ CREATE TABLE `job_details` (
     `job_command` varchar(150) NOT NULL,
 	`job_status` VARCHAR(50)
 	PRIMARY KEY(`id`),
-    foreign key(`user_id`) REFERENCES user_authentication(id) ON DELETE CASCADE ON UPDATE CASCADE
+    foreign key(`user_id`) REFERENCES user_details(id) ON DELETE CASCADE ON UPDATE CASCADE
 
 
 );
