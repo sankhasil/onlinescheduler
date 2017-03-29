@@ -11,7 +11,6 @@ import com.scheduler.model.UserAuthentication;
  * @author Sanky
  *
  */
-@Service
 public interface AuthenticationService {
 
 public boolean authenticate(UserAuthentication userAuthentication);

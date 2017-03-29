@@ -27,6 +27,7 @@ public class AuthenticationController {
 
 	private String sessionUUID;
 	
+	@Autowired
 	private AuthenticationService authenticationService;
 	
 	@RequestMapping(value="/authenticate", method = RequestMethod.POST)

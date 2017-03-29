@@ -5,7 +5,10 @@ package com.scheduler.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.scheduler.model.UserAuthentication;
 import com.scheduler.repository.UserAuthenticationRepository;
@@ -14,10 +17,11 @@ import com.scheduler.repository.UserAuthenticationRepository;
  * @author Sanky
  *
  */
+@Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-	@Autowired
 	UserAuthenticationRepository userAuthenticationRepository;
+	
 	@Override
 	public boolean authenticate(UserAuthentication userAuthentication) {
 		UserAuthentication dataFromDb = this.findByUserName(userAuthentication.getUser_name());

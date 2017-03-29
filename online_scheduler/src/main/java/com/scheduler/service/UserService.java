@@ -13,7 +13,6 @@ import com.scheduler.model.User;
  * @author Sanky
  *
  */
-@Service
 public interface UserService {
 
 	
