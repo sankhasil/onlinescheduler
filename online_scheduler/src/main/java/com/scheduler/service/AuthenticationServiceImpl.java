@@ -5,7 +5,10 @@ package com.scheduler.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.scheduler.model.UserAuthentication;
+import com.scheduler.repository.UserAuthenticationRepository;
 
 /**
  * @author Sanky
@@ -13,6 +16,8 @@ import com.scheduler.model.UserAuthentication;
  */
 public class AuthenticationServiceImpl implements AuthenticationService {
 
+	@Autowired
+	UserAuthenticationRepository userAuthenticationRepository;
 	@Override
 	public boolean authenticate(UserAuthentication userAuthentication) {
 		UserAuthentication dataFromDb = this.findByUserName(userAuthentication.getUser_name());
@@ -23,31 +28,30 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 	@Override
 	public List<UserAuthentication> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return userAuthenticationRepository.findAll();
 	}
 
 	@Override
-	public UserAuthentication findOne(String userId) {
+	public UserAuthentication findOne(Long userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void save(UserAuthentication userAuthentication) {
-		// TODO Auto-generated method stub
+		userAuthenticationRepository.save(userAuthentication);
 		
 	}
 
 	@Override
-	public void delete(String userId) {
-		// TODO Auto-generated method stub
+	public void delete(Long userId) {
+		userAuthenticationRepository.delete(userId);
 		
 	}
 
 	@Override
 	public UserAuthentication findByUserName(String userName) {
-		// TODO Auto-generated method stub
+		//TODO: query for fetching user authentication details : userAuthenticationRepository.findOne(username based query)
 		return null;
 	}
 
