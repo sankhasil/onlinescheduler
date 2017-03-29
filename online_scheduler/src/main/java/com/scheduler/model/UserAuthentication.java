@@ -51,7 +51,6 @@ public class UserAuthentication {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -95,8 +94,4 @@ public class UserAuthentication {
 		}
 		return true;
 	}
-	
-	
-	
-
 }
