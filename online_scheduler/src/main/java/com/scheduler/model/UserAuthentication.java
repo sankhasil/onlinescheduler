@@ -27,6 +27,11 @@ public class UserAuthentication {
 
 	private User user;
 	
+	
+	public long getId() {
+		return id;
+	}
+
 	public String getUser_name() {
 		return user_name;
 	}

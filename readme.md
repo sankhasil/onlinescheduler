@@ -19,23 +19,21 @@ CREATE TABLE `user_authentication` (
 	PRIMARY KEY(`id`)
 );
 
+3. job_details
+CREATE TABLE `job_details` (
+	`id`	BIGINT NOT NULL UNIQUE,
+    `user_id` BIGINT NOT NULL,
+	`job_name`	VARCHAR(100) NOT NULL UNIQUE,
+	`job_description`	VARCHAR(150),
+    `job_command` varchar(150) NOT NULL,
+	`job_status` VARCHAR(50)
+	PRIMARY KEY(`id`),
+    foreign key(`user_id`) REFERENCES user_authentication(id) ON DELETE CASCADE ON UPDATE CASCADE
 
-http://javabeat.net/spring-data-jpa/
 
-https://github.com/pfac/demo-spring-data-jpa-hibernate-h2/blob/master/src/main/java/com/iampfac/demo/data/jpa/JpaProxyUserRepository.java
+);
 
-https://hellokoding.com/jpa-one-to-one-foreignkey-relationship-example-with-spring-boot-maven-and-mysql/
 
-https://spring.io/guides/gs/actuator-service/
-
-https://dzone.com/articles/crud-using-spring-data-rest
-
-http://jasonwatmore.com/post/2015/03/10/angularjs-user-registration-and-login-example-tutorial
-
-http://www.javainuse.com/spring/SpringBoot_DataJPA
-http://www.javainuse.com/spring/springboot_testcases
-http://www.javainuse.com/spring/sprboot_sec
-http://www.javainuse.com/spring/rest3
 
 # cron job overview
 Cron is driven by a crontab (cron table) file, a configuration file that specifies shell commands to run periodically on a given schedule. The crontab files are stored where the lists of jobs and other instructions to the cron daemon are kept. Users can have their own individual crontab files and often there is a system-wide crontab file (usually in /etc or a subdirectory of /etc) that only system administrators can edit.

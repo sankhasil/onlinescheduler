@@ -18,7 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
  * @author Sanky
  *
  */
-public class UserTest extends ApplicationTester {
+public class JobTest extends ApplicationTester {
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
@@ -28,10 +28,9 @@ public class UserTest extends ApplicationTester {
 	public void setup() {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 	}
-
 	@Test
-	public void testAddUser() throws Exception {
-		mockMvc.perform(post("/user/add").contentType(MediaType.APPLICATION_JSON).content("{\"userAuthentication\": {\"user_name\": \"blah\",\"password\": \"blahblah\"},\"first_name\": \"fist blah\",\"last_name\": \"last blah\",\"email\": \"blah@blah\",\"phone\": 3322445}")).andExpect(status().isCreated());
+	public void testAddJob() throws Exception {
+		mockMvc.perform(post("/job/add").contentType(MediaType.APPLICATION_JSON).content("{\"job_name\": \"blah\",\"job_command\": \"1 0 * * *  printf > /var/log/apache/error_log\",\"job_description\":blahh }")).andExpect(status().isCreated());
 
 	}
 }

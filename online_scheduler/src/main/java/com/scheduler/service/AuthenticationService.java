@@ -15,7 +15,6 @@ public interface AuthenticationService {
 
 public boolean authenticate(UserAuthentication userAuthentication);
 public List<UserAuthentication> findAll();
-public UserAuthentication findOne(Long userId); 
 public UserAuthentication findByUserName(String userName);
 public void save(UserAuthentication userAuthentication);
 public void delete(Long userId);
