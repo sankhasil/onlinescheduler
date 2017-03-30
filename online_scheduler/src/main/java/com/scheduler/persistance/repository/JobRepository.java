@@ -18,10 +18,10 @@ import com.scheduler.model.Job;
 @Repository
 public interface JobRepository extends JpaRepository<Job, Long> {
 
-	@Query("select j from Job j where j.user_id = ?1")
-	public List<Job> findAllByUser(long user_id);
+	@Query("SELECT j from Job as j where j.user_id = ?1")
+	public List<Job> findAllByUser_id(long user_id);
 	
-	@Query("SELECT j from Job j where j.job_name =?1")
+	@Query("SELECT j from Job as j where j.job_name =?1")
 	public Job findByJobName(String job_name);
 	
 	

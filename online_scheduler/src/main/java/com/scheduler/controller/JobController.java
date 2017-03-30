@@ -59,6 +59,6 @@ public class JobController {
 	@RequestMapping(value = "/deActivate/{jobId}", method = RequestMethod.POST)
 	@ResponseStatus(code = HttpStatus.OK)
 	public void deActivateJob(@PathVariable Long jobId) {
-		jobService.updateJobStatus(jobId, "deActive");
+		jobService.updateJobStatus(jobId, "deactive");
 	}
 }

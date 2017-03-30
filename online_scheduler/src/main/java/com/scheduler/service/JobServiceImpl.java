@@ -28,7 +28,7 @@ public class JobServiceImpl implements JobService {
 
 	@Override
 	public List<Job> getAllByUser(long userID) {
-		return jobRepository.findAllByUser(userID);
+		return jobRepository.findAllByUser_id(userID);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class JobServiceImpl implements JobService {
 
 		Job job = jobRepository.findOne(jobId);
 		job.setJob_status(status);
-		jobRepository.saveAndFlush(job);
+		jobRepository.save(job);
 
 	}
 }

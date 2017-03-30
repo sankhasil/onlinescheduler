@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.scheduler.model.User;
+
 /**
  * @author Sanky
  *
@@ -44,6 +46,13 @@ public class AuthenticationTest extends ApplicationTester {
 
 	@Test
 	public void testAuthenticateValidUser() throws Exception {
+		
+		User user = new User();
+		user.setEmail("somelast@last.com");
+		user.setFirst_name("some");
+		user.setUser_name("somelast");
+		user.setPassword("somelast");
+		userRepo.save(user);
 		mockMvc.perform(post("/authentication/authenticate").contentType(MediaType.APPLICATION_JSON).content("{\"user_name\":\"somelast\",\"password\":\"somelast\"}")).andExpect(status().isOk());
 
 	}

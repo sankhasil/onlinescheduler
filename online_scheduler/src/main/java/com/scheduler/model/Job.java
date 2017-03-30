@@ -30,6 +30,9 @@ public class Job {
 	private String job_status;
 	
 	
+	public long getId() {
+		return id;
+	}
 	public long getUser_id() {
 		return user_id;
 	}

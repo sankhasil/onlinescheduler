@@ -5,10 +5,10 @@ I listed below the points
 ### What are not done
 
 #### Backend
-* User creation and saving to database has issue with hibernate automatic id generation. Its failing to create a user.
-* Similar to user "Job" is also have issue of saving.
-* "User" Testcase is not passing due to above issues
-* "Job" Testcases are also not passing due the same. Since not tested, coding is also written based on assumptions.
+* User creation and saving to database has issue with hibernate automatic id generation. Its failing to create a user.(fixed)
+* Similar to user "Job" is also have issue of saving.(fixed)
+* "User" Testcase is not passing due to above issues (fixed)
+* "Job" Testcases are also not passing due the same. Since not tested, coding is also written based on assumptions.(fixed)
 * "UserService" not having proper validations for user creations and authentications.
 * Password encryption methodology not added.
 * Session variables not used for storing User releated data for single sign-on validation concept.
@@ -41,9 +41,9 @@ I listed below the points
  (Important: database name in application.properties is set to online_scheduler, please change accordingly if you have different name   and then use the below scripts before running the server)
  
 ### Database Table scripts
-1. user_details:
+- (dont run the scripts since hibernate automatically creates the table)
 ```sql
-
+1. user_details:
 CREATE TABLE `user_details` (
 	`id`	BIGINT NOT NULL,
 	`first_name`	VARCHAR(100) NOT NULL,
