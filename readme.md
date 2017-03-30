@@ -7,10 +7,10 @@ The project is not fully functionally working. UI also not functional. I tried m
 or else run using maven spring-boot goal, [mvn spring-boot:run]
 
 - To execute UI, You need a tomcat server or apache server and put the whole UI folder into webcontent folder.
-(Important: Since already port: 8080 is used , please change the UI server port, there is cross origin issue which required Spring boot code changes. Adding [ @CrossOrigin(origins = "http://localhost:<port>")] on top of every Controller class.
+(Important: Since already port: 8080 is used , please change the UI server port, there is cross origin issue which required Spring boot code changes. Adding [ @CrossOrigin(origins = "http://localhost:<port>")] on top of every Controller class.)
 
 - You need to run the following Database scripts in MySql
-
+(Important: database name in application.properties is set to online_scheduler, please change accordingly if you have different name and then use the below scripts before running the server)
 # Database Table scripts
 1. user_details:
 

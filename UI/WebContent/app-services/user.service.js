@@ -5,16 +5,20 @@
         .module('app')
         .factory('UserService', UserService);
 
-    UserService.$inject = ['$http'];
+    UserService.$inject = ['$http','$rootscope'];
     function UserService($http) {
         var service = {};
 
-        service.GetAll = GetAll;
-        service.GetById = GetById;
+        service.GetAllJobs = GetAllJobs;
+//        service.GetById = GetById;
         service.GetByUsername = GetByUsername;
         service.Create = Create;
-        service.Update = Update;
-        service.Delete = Delete;
+        service.CreateJob = CreateJob;
+        service.DeleteJob = DeleteJob;
+        service.ActivateJob = ActivateJob;
+        service.DeActivateJob = DeActivateJob;
+//        service.Update = Update;
+//        service.Delete = Delete;
 
         return service;
         
@@ -42,9 +46,9 @@
 //            return $http.delete('/api/users/' + id).then(handleSuccess, handleError('Error deleting user'));
 //        }
 //        
-//        function GetAll() {
-//            return $http.get('http://localhost:8080/user/getAll').then(handleSuccess, handleError('Error getting all users'));
-//        }
+        function GetAllJobs(user_id) {
+            return $http.get('http://localhost:8080/job/getAll/'+user_id).then(handleSuccess, handleError('Error getting all Jobs'));
+        }
 //
 //        function GetById(id) {
 //            return $http.get('http://localhost:8080/user/get/' + id).then(handleSuccess, handleError('Error getting user by id'));
@@ -56,6 +60,20 @@
 
         function Create(user) {
             return $http.post('http://localhost:8080/user/add', user).then(handleSuccess, handleError('Error creating user'));
+        }
+        
+        function CreateJob(job,user) {
+        	job.user_id = user.id;
+            return $http.post('http://localhost:8080/job/add',job).then(handleSuccess, handleError('Error creating Job'));
+        }
+        function DeleteJob(id) {
+            return $http.delete('http://localhost:8080/job/delete/'+id).then(handleSuccess, handleError('Error deleting Job'));
+        }
+        function ActivateJob(id) {
+            return $http.post('http://localhost:8080/job/activate/'+id).then(handleSuccess, handleError('Error activating Job'));
+        }
+        function DeActivateJob(id) {
+            return $http.post('http://localhost:8080/job/deActivate/'+id).then(handleSuccess, handleError('Error deactivating Job'));
         }
 
 //        function Update(user) {

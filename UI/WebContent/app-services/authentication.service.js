@@ -42,12 +42,13 @@
 			$http({
 				method : 'POST',
 				url : 'http://localhost:8080/authentication/authenticate',
-				data:{ test: 'test' }
+				data:{ user_name : username,password : password }
 			}).then(function(response) {
-				alert('success');
+				console.log("success");
+				$rootScope.globals['currentUser'] = response;
 				callback(response);
 			}, function errorCallback(response) {
-				alert('failure');
+				console.log("failure");
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 			});
@@ -56,6 +57,7 @@
 
 		function SetCredentials(username, password) {
 			// FIXME: use single sign on concept
+			
 			var authdata = Base64.encode(username + ':' + password);
 			// var authData = "c2NoZWR1bGVyXG9ubGluZTpvbmxpbmU="
 

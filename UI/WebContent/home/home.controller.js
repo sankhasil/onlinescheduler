@@ -10,14 +10,16 @@
         var vm = this;
 
         vm.user = null;
-        vm.allUsers = [];
-        vm.deleteUser = deleteUser;
-
+        vm.allJobs = [];
+//        vm.deleteUser = deleteUser;
+        vm.createJob = createJob;
+        vm.deleteJob = deleteJob;
+        vm.activateJob = activateJob;
         initController();
 
         function initController() {
             loadCurrentUser();
-            loadAllUsers();
+            loadAllJobs();
         }
 
         function loadCurrentUser() {
@@ -27,19 +29,39 @@
                 });
         }
 
-        function loadAllUsers() {
-            UserService.GetAll()
-                .then(function (users) {
-                    vm.allUsers = users;
+        function createJob() {
+            UserService.CreateJob(vm.job)
+                .then(function () {
+                    console.log("success");
                 });
         }
-
-        function deleteUser(id) {
-            UserService.Delete(id)
-            .then(function () {
-                loadAllUsers();
-            });
+        
+        function deleteJob(id) {
+            UserService.DeleteJob(id)
+                .then(function () {
+                    console.log("success");
+                });
         }
+        function activateJob(id) {
+            UserService.ActivateJob(id)
+                .then(function () {
+                    console.log("success");
+                });
+        }
+        
+        function loadAllJobs() {
+            UserService.GetAll(vm.user.id)
+                .then(function (jobs) {
+                    vm.jobs = jobs;
+                });
+        }
+//
+//        function deleteUser(id) {
+//            UserService.Delete(id)
+//            .then(function () {
+//                loadAllUsers();
+//            });
+//        }
     }
 
 })();

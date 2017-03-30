@@ -18,6 +18,7 @@ import com.scheduler.model.Job;
 import com.scheduler.service.JobService;
 
 @RestController
+//@CrossOrigin(origins = "http://localhost:9080") Required for UI
 @RequestMapping("/job")
 public class JobController {
 
@@ -25,6 +26,7 @@ public class JobController {
 	@Autowired
 	private JobService jobService;
 
+	//Since after authentication user is returned to UI, Job request will have the user_id field with proper user's id
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ResponseEntity<String> addJob(@RequestBody Job job) {
 		if (job != null) {

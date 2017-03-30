@@ -8,7 +8,7 @@
     </li>
     
     <h2>Create Job</h2>
-    <form name="form" ng-submit="vm.addJob()" role="form">
+    <form name="form" ng-submit="vm.createJob()" role="form">
         <div class="form-group" ng-class="{ 'has-error': form.jobName.$dirty && form.jobName.$error.required }">
             <label for="name">Name</label>
             <input type="text" name="jobName" id="jobName" class="form-control" ng-model="vm.job.job_name" required />
