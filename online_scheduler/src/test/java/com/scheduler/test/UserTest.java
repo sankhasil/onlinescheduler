@@ -30,9 +30,13 @@ public class UserTest extends ApplicationTester {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 	}
 
+	/*
+	 * Job creation is not happening due to hibernate automatic @id generation.
+	 */
+
 	@Test
 	public void testAddUser() throws Exception {
-		mockMvc.perform(post("/user/add").contentType(MediaType.APPLICATION_JSON).content("{\"userAuthentication\": {\"user_name\": \"blah\",\"password\": \"blahblah\"},\"first_name\": \"fist blah\",\"last_name\": \"last blah\",\"email\": \"blah@blah\",\"phone\": 3322445}")).andExpect(status().isCreated());
+		mockMvc.perform(post("/user/add").contentType(MediaType.APPLICATION_JSON).content("{\"user_name\": \"blah\",\"password\": \"blahblah\",\"first_name\": \"fist blah\",\"last_name\": \"last blah\",\"email\": \"blah@blah\",\"phone\": 3322445}")).andExpect(status().isCreated());
 
 	}
 	
