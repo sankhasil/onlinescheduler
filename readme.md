@@ -1,5 +1,5 @@
 # Disclaimer
-The project is not fully functionally working. UI also not functional. I tried my best to code the whole scenario but due lack of time its not finished.
+The project is not fully functionally working. UI also not functional. I tried my best to code the whole scenario but due lack of time its not finished. To be honest in my opinion this application may be have designed and coded far better way than this, if little more time can be invested into this.
 
 # Running the Application
 - You need run the SpringBoot Runner class, ApplicationRunner.java under com.scheduler package
@@ -11,6 +11,7 @@ The project is not fully functionally working. UI also not functional. I tried m
  
 - You need to run the following Database scripts in MySql
  (Important: database name in application.properties is set to online_scheduler, please change accordingly if you have different name   and then use the below scripts before running the server)
+ 
 # Database Table scripts
 1. user_details:
 
